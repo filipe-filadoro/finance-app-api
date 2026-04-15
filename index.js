@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import { CreateUserController } from './src/controllers/create-user.js'
 
 dotenv.config()
 
@@ -7,4 +8,13 @@ const app = express()
 
 app.use(express.json())
 
-app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`))
+app.post('/api/users', async(request, response) => {
+    const createUserController = new CreateUserController()
+
+    const createUserResponse = await createUserController.execute(request)
+
+    response.status(createUserResponse.statusCode).json(createUserResponse.body)
+})
+
+app.listen(process.env.PORT, () => 
+    console.log(`Listening on port ${process.env.PORT}`))
