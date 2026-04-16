@@ -1,5 +1,5 @@
-export const ok = (body) => ({
-    statusCode: 200,
+export const badRequest = (body) => ({
+    statusCode: 400,
     body,
 })
 
@@ -8,16 +8,14 @@ export const created = (body) => ({
     body,
 })
 
-export const badRequest = (errorMessage) => ({
-    statusCode: 400,
-    body: {
-        message: errorMessage,
-    },
-})
-
 export const serverError = () => ({
     statusCode: 500,
     body: {
         message: 'Internal server error',
     },
+})
+
+export const ok = (body) => ({
+    statusCode: 200,
+    body,
 })
