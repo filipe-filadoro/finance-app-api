@@ -1,4 +1,6 @@
 import { PostgresHelper } from '../../Helper.js'
+import { EmailAlreadyInUseError } from '../../../../errors/user.js'
+
 
 export class PostgresCreateUserRepository {
     async execute(createUserParams) {
